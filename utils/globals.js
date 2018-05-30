@@ -1,0 +1,11 @@
+export default {
+  COLOR: {
+    TOOLBAR_COLOR: "#b20000",
+    READER_HEADER_COLOR: "#b20000dd",
+    READER_FOOTER_COLOR: "#b20000dd",
+    TOOLBAR_COLOR_ALT: "#DEBB0A",
+    TOOLBAR_COLOR_ALT2: "#003436",
+    TOOLBAR_TINT: "#fff",
+    SETTING_SWITCH_COLOR: "#b20000"
+  }
+};
