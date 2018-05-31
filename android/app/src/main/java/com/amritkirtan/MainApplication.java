@@ -6,6 +6,7 @@ import com.facebook.react.ReactApplication;
 import com.apsl.versionnumber.RNVersionNumberPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import org.pgsqlite.SQLitePluginPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
 import com.corbt.keepawake.KCKeepAwakePackage;
 import com.idehub.GoogleAnalyticsBridge.GoogleAnalyticsBridgePackage;
@@ -34,7 +35,8 @@ public class MainApplication extends Application implements ReactApplication {
             new SplashScreenReactPackage(),
             new RNSpinkitPackage(),
             new KCKeepAwakePackage(),
-            new GoogleAnalyticsBridgePackage()
+            new GoogleAnalyticsBridgePackage(),
+            new SQLitePluginPackage() // register SQLite Plugin here
       );
     }
 

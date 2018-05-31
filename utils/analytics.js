@@ -1,7 +1,7 @@
 import { GoogleAnalyticsTracker } from "react-native-google-analytics-bridge";
 
 export default class AnalyticsManager {
-  TRACKING_ID = "UA-45513519-1";
+  TRACKING_ID = "UA-45513519-8";
   static myInstance = null;
   _trackingOn = false;
   _tracker;

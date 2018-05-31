@@ -26,7 +26,7 @@ class Home extends React.Component {
         ]}
       >
         <Text style={[styles.title, this.props.nightMode && styles.nightMode]}>
-          Sundar Gutka
+          Amrit Kirtan
         </Text>
         <Text style={[styles.small, this.props.nightMode && styles.nightMode]}>
           {"\n"}Created By:
@@ -64,7 +64,7 @@ class Home extends React.Component {
           using this app.
           {"\n"}
           {"\n"}
-          Sundar Gutka utilizes{" "}
+          Amrit Kirtan utilizes{" "}
           <Text
             style={{ color: "#009bff" }}
             onPress={() => Linking.openURL("https://www.banidb.com/")}
