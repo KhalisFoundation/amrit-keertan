@@ -327,10 +327,11 @@ class Reader extends React.Component {
       currentIndex: index,
       titleGurmukhi: item.gurmukhi,
       titleRoman: item.roman,
-      currentShabad: item.id
+      currentShabad: item.shabadId
     });
 
-    this.loadShabad(item.id);
+    this.loadShabad(item.shabadId);
+    AnalyticsManager.getInstance().trackReaderEvent("swipeShabad", item.roman);
     this.trackScreenForShabad(item.roman);
   }
 
@@ -351,7 +352,7 @@ class Reader extends React.Component {
                 this.state.currentIndex == -1
                   ? params.index
                   : this.state.currentIndex;
-              if (nativeEvent.translationX > 0) {
+              if (nativeEvent.velocityX > 0) {
                 // Swipe Left
                 if (index !== 0) {
                   index--;

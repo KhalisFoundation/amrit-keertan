@@ -2,39 +2,6 @@
  * Constants
  */
 
-export const mergedBaniList = baniList => {
-  const mergedData = { baniOrder: [] };
-  // defaultBani.baniOrder.forEach(obj => {
-  //   if (obj.id) {
-  //     var baniItem = baniList[obj.id];
-  //     if (baniItem) {
-  //       mergedData.baniOrder.push({
-  //         id: obj.id,
-  //         gurmukhi: baniItem.gurmukhi,
-  //         roman: baniItem.roman
-  //       });
-  //     }
-  //   } else {
-  //     var folder = [];
-  //     obj.folder.forEach(item => {
-  //       var baniItem = baniList[item.id];
-  //       folder.push({
-  //         id: item.id,
-  //         gurmukhi: baniItem.gurmukhi,
-  //         roman: baniItem.roman
-  //       });
-  //     });
-
-  //     mergedData.baniOrder.push({
-  //       gurmukhi: obj.gurmukhi,
-  //       roman: obj.roman,
-  //       folder
-  //     });
-  //   }
-  // });
-  return mergedData;
-};
-
 export const TextType = Object.freeze({
   GURMUKHI: 0,
   TRANSLITERATION: 1,

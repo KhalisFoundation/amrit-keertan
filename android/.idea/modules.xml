@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AmritKirtan.iml" filepath="$PROJECT_DIR$/AmritKirtan.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/react-native-gesture-handler.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-google-analytics-bridge/android/react-native-google-analytics-bridge.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-google-analytics-bridge/android/react-native-google-analytics-bridge.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-keep-awake/android/react-native-keep-awake.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-keep-awake/android/react-native-keep-awake.iml" />
       <module fileurl="file://$PROJECT_DIR$/../node_modules/react-native-spinkit/android/react-native-spinkit.iml" filepath="$PROJECT_DIR$/../node_modules/react-native-spinkit/android/react-native-spinkit.iml" />

@@ -6,7 +6,7 @@
     density="420dpi"
     format="10"
     plugin-version="3.1.2"
-    timestamp="1527791486964"
+    timestamp="1527863981197"
     token="-6852025471056381503"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -23,9 +23,13 @@
         name="verifier"
         duration="0" />
 
+    <artifact
+        location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+        type="SPLIT_MAIN" />
+
     <build
         build-mode="FULL"
-        timestamp="1527791468943"
+        timestamp="1527862089064"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
@@ -34,22 +38,22 @@
             location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
-            type="SPLIT" />
-        <artifact
             location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
             location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
             location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
             location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
@@ -66,7 +70,11 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1527791486964"
-        verifier="COLD_SWAP_REQUESTED" />
+        timestamp="1527863981197"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
 
 </instant-run>

@@ -33,7 +33,7 @@ class Database {
   static getKirtanForFolder(headerId) {
     return new Promise(function(resolve) {
       db.executeSql(
-        "SELECT ShabadID, Gurmukhi, Transliteration FROM mv_AK_Shabad WHERE HeaderID = " +
+        "SELECT VerseID, ShabadID, Gurmukhi, Transliteration FROM mv_AK_Shabad WHERE HeaderID = " +
           headerId +
           " AND MainLine = 1 ORDER BY IndexID ASC;",
         [],
@@ -43,7 +43,8 @@ class Database {
           for (let i = 0; i < len; i++) {
             let row = results.rows.item(i);
             totalResults.push({
-              id: row.ShabadID,
+              id: row.VerseID,
+              shabadId: row.ShabadID,
               gurmukhi: row.Gurmukhi,
               roman: row.Transliteration
             });
@@ -57,14 +58,13 @@ class Database {
   static getShabadForId(shabadId, larivaar, visram) {
     return new Promise(function(resolve) {
       db.executeSql(
-        "SELECT ID, Gurmukhi, GurmukhiBisram, Transliteration, English, MainLine FROM mv_AK_Shabad WHERE ShabadID = " +
+        "SELECT VerseID, Gurmukhi, GurmukhiBisram, Transliteration, English, MainLine FROM mv_AK_Shabad WHERE ShabadID = " +
         shabadId +
           " ORDER BY VerseID ASC;",
         [],
         results => {
           var totalResults = new Array(results.rows.length);
           var len = results.rows.length;
-
           var gurmukhi;
           var transliteration;
           var englishTranslation;
@@ -98,7 +98,7 @@ class Database {
               row.Transliteration == "" ? " " : row.Transliteration;
 
             totalResults[i] = {
-              id: "" + row.ID,
+              id: row.VerseID,
               gurmukhi: curGurmukhi,
               roman: row.Transliteration,
               englishTranslations: row.English,

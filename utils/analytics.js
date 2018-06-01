@@ -14,7 +14,7 @@ export default class AnalyticsManager {
   }
 
   allowTracking(enabled) {
-    //this._trackingOn = enabled;
+    this._trackingOn = enabled;
     if (enabled && this._tracker == null) {
       this._tracker = new GoogleAnalyticsTracker(this.TRACKING_ID);
     }
@@ -26,7 +26,15 @@ export default class AnalyticsManager {
     }
   }
 
-  trackEvent(action, label) {
+  trackReaderEvent(action, label) {
+    if (this._trackingOn) {
+      this._tracker.trackEvent("reader", action, {
+        label: "" + label
+      });
+    }
+  }
+
+  trackSettingsEvent(action, label) {
     if (this._trackingOn) {
       this._tracker.trackEvent("setting", action, {
         label: "" + label

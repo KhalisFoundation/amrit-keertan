@@ -4,6 +4,7 @@ ADDED from /Users/kee/Documents/Khalis/amrit-kirtan/android/app/src/main/Android
 INJECTED from /Users/kee/Documents/Khalis/amrit-kirtan/android/app/src/main/AndroidManifest.xml:1:1-26:12
 INJECTED from /Users/kee/Documents/Khalis/amrit-kirtan/android/app/src/main/AndroidManifest.xml:1:1-26:12
 INJECTED from /Users/kee/Documents/Khalis/amrit-kirtan/android/app/src/main/AndroidManifest.xml:1:1-26:12
+MERGED from [:react-native-gesture-handler] /Users/kee/Documents/Khalis/amrit-kirtan/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-version-number] /Users/kee/Documents/Khalis/amrit-kirtan/node_modules/react-native-version-number/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-spinkit] /Users/kee/Documents/Khalis/amrit-kirtan/node_modules/react-native-spinkit/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-16:12
 MERGED from [:react-native-vector-icons] /Users/kee/Documents/Khalis/amrit-kirtan/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
@@ -160,6 +161,8 @@ uses-sdk
 INJECTED from /Users/kee/Documents/Khalis/amrit-kirtan/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/kee/Documents/Khalis/amrit-kirtan/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/kee/Documents/Khalis/amrit-kirtan/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-gesture-handler] /Users/kee/Documents/Khalis/amrit-kirtan/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] /Users/kee/Documents/Khalis/amrit-kirtan/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-version-number] /Users/kee/Documents/Khalis/amrit-kirtan/node_modules/react-native-version-number/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-version-number] /Users/kee/Documents/Khalis/amrit-kirtan/node_modules/react-native-version-number/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-spinkit] /Users/kee/Documents/Khalis/amrit-kirtan/node_modules/react-native-spinkit/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
