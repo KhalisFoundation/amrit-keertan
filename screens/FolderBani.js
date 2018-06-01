@@ -31,11 +31,13 @@ class FolderBani extends React.Component {
   }
 
   handleOnPress(item, navigator) {
+    let index = this.state.data.indexOf(item);
+
     this.props.setCurrentShabad(item.id);
     navigator.navigate({
       key: "Reader-" + item.id,
       routeName: "Reader",
-      params: { item: item }
+      params: { item: item, index: index, data: this.state.data }
     });
   }
 

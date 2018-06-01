@@ -55,7 +55,7 @@ class BaniList extends Component {
               onPress={() => onPress(item, navigation)}
             />
           )}
-          keyExtractor={item => "" + item.id}
+          keyExtractor={item => item.id + "-" + item.gurmukhi}
         />
       </List>
     );

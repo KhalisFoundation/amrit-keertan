@@ -14,7 +14,7 @@ import AboutScreen from "./screens/About";
 import ReaderScreen from "./screens/Reader";
 import createStore from "./config/store";
 
-const FolderNavigation = TabNavigator({
+const RootStack = StackNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions: ({ navigation }) => ({
@@ -82,12 +82,6 @@ const FolderNavigation = TabNavigator({
       tabBarVisible: false,
       swipeEnabled: false
     })
-  }
-});
-
-const RootStack = StackNavigator({
-  BaniList: {
-    screen: FolderNavigation
   },
   Settings: {
     screen: SettingsScreen,
@@ -159,18 +153,16 @@ export default class App extends React.Component {
     if (navState.hasOwnProperty("index")) {
       this._getCurrentRouteName(navState.routes[navState.index]);
     } else {
-      if (
-        navState.routeName === "Settings"
-      ) {
+      if (navState.routeName === "Settings") {
         this.setState({ safeAreaNavBarColor: GLOBAL.COLOR.TOOLBAR_COLOR_ALT });
         this.setState({ statusBarType: "dark-content" });
-      } else if (
-        navState.routeName === "About"
-      ) {
+      } else if (navState.routeName === "About") {
         this.setState({ safeAreaNavBarColor: GLOBAL.COLOR.TOOLBAR_COLOR_ALT2 });
         this.setState({ statusBarType: "light-content" });
       } else if (navState.routeName === "Reader") {
-        this.setState({ safeAreaNavBarColor: GLOBAL.COLOR.READER_HEADER_COLOR });
+        this.setState({
+          safeAreaNavBarColor: GLOBAL.COLOR.READER_HEADER_COLOR
+        });
         this.setState({ statusBarType: "light-content" });
       } else {
         this.setState({ safeAreaNavBarColor: GLOBAL.COLOR.TOOLBAR_COLOR });

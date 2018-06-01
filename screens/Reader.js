@@ -13,6 +13,11 @@ import { connect } from "react-redux";
 import { Header, Slider } from "react-native-elements";
 import { bindActionCreators } from "redux";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import {
+  PanGestureHandler,
+  Directions,
+  State
+} from "react-native-gesture-handler";
 import GLOBAL from "../utils/globals";
 import Database from "../utils/database";
 import LoadingIndicator from "../components/LoadingIndicator";
@@ -31,6 +36,10 @@ class Reader extends React.Component {
 
     this.state = {
       data: [],
+      titleGurmukhi: "",
+      titleRoman: "",
+      currentIndex: -1,
+      currentShabad: -1,
       paused: true,
       scrollMultiplier: 1.0,
       isLoading: false,
@@ -50,9 +59,9 @@ class Reader extends React.Component {
     }).start();
   }
 
-  loadShabad() {
+  loadShabad(shabadId) {
     Database.getShabadForId(
-      this.props.currentShabad,
+      shabadId,
       this.props.larivaar,
       this.props.visram
     ).then(shabad => {
@@ -64,7 +73,10 @@ class Reader extends React.Component {
   }
 
   componentWillMount() {
-    this.loadShabad();
+    this.setState({
+      currentShabad: this.props.currentShabad
+    });
+    this.loadShabad(this.props.currentShabad);
   }
 
   componentDidUpdate(prevProps) {
@@ -72,7 +84,7 @@ class Reader extends React.Component {
       prevProps.larivaar != this.props.larivaar ||
       prevProps.visram != this.props.visram
     ) {
-      this.loadShabad();
+      this.loadShabad(this.state.currentShabad);
     }
   }
 
@@ -115,7 +127,7 @@ class Reader extends React.Component {
         "padding-top: 3.5em; }";
       html += "* { -webkit-user-select: none; }";
       html += "</style><script>" + this.loadScrollJS() + "</script>";
-      html += "</head><body><div id='contentWrapper'>";
+      html += "</head><body>";
 
       data.forEach(function(item) {
         html += "<div style='padding-top: .5em'>";
@@ -185,7 +197,7 @@ class Reader extends React.Component {
         }
         html += "</div>";
       });
-      html += "</div></body></html>";
+      html += "</body></html>";
       return html;
     }
   }
@@ -199,43 +211,6 @@ class Reader extends React.Component {
     var holding = false;
     var holdTimer;
 
-    let pageWidth = window.innerWidth || document.body.clientWidth;
-let treshold = Math.max(1,Math.floor(0.01 * (pageWidth)));
-let touchstartX = 0;
-let touchstartY = 0;
-let touchendX = 0;
-let touchendY = 0;
-
-const limit = Math.tan(45 * 1.5 / 180 * Math.PI);
-const gestureZone = document.getElementById('contentWrapper');
-gestureZone.addEventListener('touchstart', function(event) {
-    touchstartX = event.changedTouches[0].screenX;
-    touchstartY = event.changedTouches[0].screenY;
-}, false);
-
-gestureZone.addEventListener('touchend', function(event) {
-    touchendX = event.changedTouches[0].screenX;
-    touchendY = event.changedTouches[0].screenY;
-    handleGesture(event);
-}, false);
-
-function handleGesture(e) {
-    let x = touchendX - touchstartX;
-    let y = touchendY - touchstartY;
-    let xy = Math.abs(x / y);
-    let yx = Math.abs(y / x);
-    if (Math.abs(x) > treshold || Math.abs(y) > treshold) {
-        if (yx <= limit) {
-            if (x < 0) {
-                alert("left");
-            } else {
-                alert("right");
-            }
-        }
-    } else {
-        alert("tap");
-    }
-}
     function setAutoScroll() {
       let speed = autoScrollSpeed;
       if(speed > 0) {
@@ -347,6 +322,18 @@ function handleGesture(e) {
     }
   }
 
+  reloadShabad(item, index) {
+    this.setState({
+      currentIndex: index,
+      titleGurmukhi: item.gurmukhi,
+      titleRoman: item.roman,
+      currentShabad: item.id
+    });
+
+    this.loadShabad(item.id);
+    this.trackScreenForShabad(item.roman);
+  }
+
   render() {
     const { params } = this.props.navigation.state;
 
@@ -355,116 +342,91 @@ function handleGesture(e) {
     }
 
     return (
-      <View
-        style={[
-          styles.container,
-          this.props.nightMode && { backgroundColor: "#000" }
-        ]}
-        onLayout={this.onLayout.bind(this)}
-      >
-        <LoadingIndicator isLoading={this.state.isLoading} />
-
-        <WebView
-          style={this.props.nightMode && { backgroundColor: "#000" }}
-          ref={webView => (this.webView = webView)}
-          source={{
-            html: this.loadHTML(this.state.data),
-            baseUrl: ""
-          }}
-          onMessage={this.handleMessage.bind(this)}
-        />
-
-        <Animated.View
-          style={[
-            styles.header,
-            { position: "absolute", top: this.state.animationPosition }
-          ]}
-        >
-          <Header
-            outerContainerStyles={{ borderBottomWidth: 0 }}
-            backgroundColor={GLOBAL.COLOR.READER_HEADER_COLOR}
-            leftComponent={
-              <Icon
-                name="arrow-back"
-                color={GLOBAL.COLOR.TOOLBAR_TINT}
-                size={30}
-                onPress={() => this.props.navigation.goBack()}
-              />
-            }
-            centerComponent={{
-              text: this.props.romanized
-                ? this.truncate.apply(params.item.roman, [30])
-                : this.truncate.apply(params.item.gurmukhi, [30]),
-              style: {
-                color: GLOBAL.COLOR.TOOLBAR_TINT,
-                fontFamily: this.props.romanized ? null : this.props.fontFace,
-                fontSize: 20
+      <PanGestureHandler
+        minDist={80}
+        onHandlerStateChange={({ nativeEvent }) => {
+          if (nativeEvent.state === State.ACTIVE) {
+            if (Math.abs(nativeEvent.velocityX) > 300) {
+              var index =
+                this.state.currentIndex == -1
+                  ? params.index
+                  : this.state.currentIndex;
+              if (nativeEvent.translationX > 0) {
+                // Swipe Left
+                if (index !== 0) {
+                  index--;
+                  this.reloadShabad(params.data[index], index);
+                }
+              } else {
+                // Swipe Right
+                if (index < params.data.length - 1) {
+                  index++;
+                  this.reloadShabad(params.data[index], index);
+                }
               }
-            }}
-            rightComponent={
-              <Icon
-                name="settings"
-                color={GLOBAL.COLOR.TOOLBAR_TINT}
-                size={30}
-                onPress={() => {
-                  let autoScrollSpeed = {
-                    autoScroll: 0,
-                    scrollMultiplier: this.state.scrollMultiplier
-                  };
-                  this.webView.postMessage(JSON.stringify(autoScrollSpeed));
-                  this.setState({
-                    paused: true
-                  });
-                  this.props.navigation.navigate({
-                    key: "Settings",
-                    routeName: "Settings"
-                  });
-                }}
-              />
             }
-          />
-        </Animated.View>
+          }
+        }}
+      >
+        <View
+          style={[
+            styles.container,
+            this.props.nightMode && { backgroundColor: "#000" }
+          ]}
+          onLayout={this.onLayout.bind(this)}
+        >
+          <LoadingIndicator isLoading={this.state.isLoading} />
 
-        {this.props.autoScroll && (
+          <WebView
+            style={this.props.nightMode && { backgroundColor: "#000" }}
+            ref={webView => (this.webView = webView)}
+            source={{
+              html: this.loadHTML(this.state.data),
+              baseUrl: ""
+            }}
+            onMessage={this.handleMessage.bind(this)}
+          />
+
           <Animated.View
             style={[
-              styles.footer,
-              {
-                position: "absolute",
-                bottom: this.state.animationPosition,
-                paddingBottom: 10,
-                backgroundColor: GLOBAL.COLOR.READER_FOOTER_COLOR
-              }
+              styles.header,
+              { position: "absolute", top: this.state.animationPosition }
             ]}
           >
-            <View style={{ flexDirection: "row" }}>
-              {this.state.paused && (
+            <Header
+              outerContainerStyles={{ borderBottomWidth: 0 }}
+              backgroundColor={GLOBAL.COLOR.READER_HEADER_COLOR}
+              leftComponent={
                 <Icon
-                  style={{ paddingTop: 15, paddingLeft: 25, width: 55 }}
-                  name="play-arrow"
+                  name="arrow-back"
                   color={GLOBAL.COLOR.TOOLBAR_TINT}
                   size={30}
-                  onPress={() => {
-                    var scrollSpeed = this.props.autoScrollSpeed;
-                    if (scrollSpeed == 0) {
-                      scrollSpeed = 1;
-                      this.props.setAutoScrollSpeed(scrollSpeed);
-                    }
-                    let autoScrollSpeed = {
-                      autoScroll: scrollSpeed,
-                      scrollMultiplier: this.state.scrollMultiplier
-                    };
-                    this.setState({
-                      paused: false
-                    });
-                    this.webView.postMessage(JSON.stringify(autoScrollSpeed));
-                  }}
+                  onPress={() => this.props.navigation.goBack()}
                 />
-              )}
-              {!this.state.paused && (
+              }
+              centerComponent={{
+                text: this.props.romanized
+                  ? this.truncate.apply(
+                      this.state.titleRoman == ""
+                        ? params.item.roman
+                        : this.state.titleRoman,
+                      [28]
+                    )
+                  : this.truncate.apply(
+                      this.state.titleGurmukhi == ""
+                        ? params.item.gurmukhi
+                        : this.state.titleGurmukhi,
+                      [30]
+                    ),
+                style: {
+                  color: GLOBAL.COLOR.TOOLBAR_TINT,
+                  fontFamily: this.props.romanized ? null : this.props.fontFace,
+                  fontSize: 20
+                }
+              }}
+              rightComponent={
                 <Icon
-                  style={{ paddingTop: 15, paddingLeft: 25, width: 55 }}
-                  name="pause"
+                  name="settings"
                   color={GLOBAL.COLOR.TOOLBAR_TINT}
                   size={30}
                   onPress={() => {
@@ -472,56 +434,118 @@ function handleGesture(e) {
                       autoScroll: 0,
                       scrollMultiplier: this.state.scrollMultiplier
                     };
+                    this.webView.postMessage(JSON.stringify(autoScrollSpeed));
                     this.setState({
                       paused: true
                     });
-                    this.webView.postMessage(JSON.stringify(autoScrollSpeed));
+                    this.props.navigation.navigate({
+                      key: "Settings",
+                      routeName: "Settings"
+                    });
                   }}
                 />
-              )}
-              <Slider
-                style={[
-                  { flex: 1, marginLeft: 25, marginRight: 25, marginTop: 10 }
-                ]}
-                minimumTrackTintColor={"#BFBFBF"}
-                maximumTrackTintColor={"#464646"}
-                thumbTintColor={"#fff"}
-                minimumValue={0}
-                maximumValue={100}
-                step={1}
-                value={this.props.autoScrollSpeed}
-                onValueChange={value => {
-                  this.props.setAutoScrollSpeed(value);
-                  let speed = value;
-                  speed === 0
-                    ? this.setState({ paused: true })
-                    : this.setState({ paused: false });
-                  let autoScrollSpeed = {
-                    autoScroll: speed,
-                    scrollMultiplier: this.state.scrollMultiplier
-                  };
-                  this.webView.postMessage(JSON.stringify(autoScrollSpeed));
-                }}
-                onSlidingComplete={value => {
-                  AnalyticsManager.getInstance().trackEvent(
-                    "autoScrollSpeed",
-                    value
-                  );
-                }}
-              />
-              <Text
-                style={{
-                  color: GLOBAL.COLOR.TOOLBAR_TINT,
-                  paddingTop: 20,
-                  paddingRight: 20
-                }}
-              >
-                {this.props.autoScrollSpeed}
-              </Text>
-            </View>
+              }
+            />
           </Animated.View>
-        )}
-      </View>
+
+          {this.props.autoScroll && (
+            <Animated.View
+              style={[
+                styles.footer,
+                {
+                  position: "absolute",
+                  bottom: this.state.animationPosition,
+                  paddingBottom: 10,
+                  backgroundColor: GLOBAL.COLOR.READER_FOOTER_COLOR
+                }
+              ]}
+            >
+              <View style={{ flexDirection: "row" }}>
+                {this.state.paused && (
+                  <Icon
+                    style={{ paddingTop: 15, paddingLeft: 25, width: 55 }}
+                    name="play-arrow"
+                    color={GLOBAL.COLOR.TOOLBAR_TINT}
+                    size={30}
+                    onPress={() => {
+                      var scrollSpeed = this.props.autoScrollSpeed;
+                      if (scrollSpeed == 0) {
+                        scrollSpeed = 1;
+                        this.props.setAutoScrollSpeed(scrollSpeed);
+                      }
+                      let autoScrollSpeed = {
+                        autoScroll: scrollSpeed,
+                        scrollMultiplier: this.state.scrollMultiplier
+                      };
+                      this.setState({
+                        paused: false
+                      });
+                      this.webView.postMessage(JSON.stringify(autoScrollSpeed));
+                    }}
+                  />
+                )}
+                {!this.state.paused && (
+                  <Icon
+                    style={{ paddingTop: 15, paddingLeft: 25, width: 55 }}
+                    name="pause"
+                    color={GLOBAL.COLOR.TOOLBAR_TINT}
+                    size={30}
+                    onPress={() => {
+                      let autoScrollSpeed = {
+                        autoScroll: 0,
+                        scrollMultiplier: this.state.scrollMultiplier
+                      };
+                      this.setState({
+                        paused: true
+                      });
+                      this.webView.postMessage(JSON.stringify(autoScrollSpeed));
+                    }}
+                  />
+                )}
+                <Slider
+                  style={[
+                    { flex: 1, marginLeft: 25, marginRight: 25, marginTop: 10 }
+                  ]}
+                  minimumTrackTintColor={"#BFBFBF"}
+                  maximumTrackTintColor={"#464646"}
+                  thumbTintColor={"#fff"}
+                  minimumValue={0}
+                  maximumValue={100}
+                  step={1}
+                  value={this.props.autoScrollSpeed}
+                  onValueChange={value => {
+                    this.props.setAutoScrollSpeed(value);
+                    let speed = value;
+                    speed === 0
+                      ? this.setState({ paused: true })
+                      : this.setState({ paused: false });
+                    let autoScrollSpeed = {
+                      autoScroll: speed,
+                      scrollMultiplier: this.state.scrollMultiplier
+                    };
+                    this.webView.postMessage(JSON.stringify(autoScrollSpeed));
+                  }}
+                  onSlidingComplete={value => {
+                    AnalyticsManager.getInstance().trackEvent(
+                      "autoScrollSpeed",
+                      value
+                    );
+                  }}
+                />
+                <Text
+                  style={{
+                    color: GLOBAL.COLOR.TOOLBAR_TINT,
+                    paddingTop: 20,
+                    paddingRight: 20
+                  }}
+                >
+                  {this.props.autoScrollSpeed}
+                </Text>
+              </View>
+            </Animated.View>
+          )}
+        </View>
+      </PanGestureHandler>
     );
   }
 }

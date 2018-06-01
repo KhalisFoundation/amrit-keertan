@@ -38,31 +38,31 @@
 		</data>
 		<key>Frameworks/IDEBundleInjection.framework/IDEBundleInjection</key>
 		<data>
-		zEroulIbyKYhB4EbtbeI4PBJfIQ=
+		Tvuq/w6S5/l+mcuMpS91/YjZ2PU=
 		</data>
 		<key>Frameworks/IDEBundleInjection.framework/Info.plist</key>
 		<data>
-		ILcX7tpm7WV44s/pfwloERQhInY=
+		6cPENvjjcXfDfBToJJ1118da8zc=
 		</data>
 		<key>Frameworks/IDEBundleInjection.framework/_CodeSignature/CodeResources</key>
 		<data>
-		ffllRjJXzZiQRVS7G4xDUtlIio8=
+		0fLvEeGLEThn4UBToFYXic4rqjA=
 		</data>
 		<key>Frameworks/IDEBundleInjection.framework/version.plist</key>
 		<data>
-		aW8T+OYkAq9p7ODvVF4KxOWxpo4=
+		W8UHQlJOUHUdjrnh0RUqh9qxkzY=
 		</data>
 		<key>Frameworks/XCTest.framework/Info.plist</key>
 		<data>
-		53QH0QrAmT2lt1KIweV2nkJMArY=
+		/6b73ybjbzwjPUHccodzeLJKGpQ=
 		</data>
 		<key>Frameworks/XCTest.framework/XCTest</key>
 		<data>
-		Gdkq4my/W+Wncmm9H9gSiFdlbus=
+		3NizfJMeU0sJP08q8Qi7wX/AyvI=
 		</data>
 		<key>Frameworks/XCTest.framework/_CodeSignature/CodeResources</key>
 		<data>
-		NZVWBiJdSoWtOlI5zY2P2Y+YauE=
+		+mvvcw5UT9t0SkNxKWk0dLOay+4=
 		</data>
 		<key>Frameworks/XCTest.framework/en.lproj/InfoPlist.strings</key>
 		<dict>
@@ -75,7 +75,7 @@
 		</dict>
 		<key>Frameworks/XCTest.framework/version.plist</key>
 		<data>
-		0KaQXY+RwumYiFnS4CGdkt22Bi0=
+		qhk6hXDyQp/YYzEpKIxg0bW3tlk=
 		</data>
 		<key>GurbaniAkharHeavySG.ttf</key>
 		<data>
@@ -119,19 +119,19 @@
 		</data>
 		<key>PlugIns/AmritKirtanTests.xctest.dSYM/Contents/Resources/DWARF/AmritKirtanTests</key>
 		<data>
-		WQk7/39OkvIioW566kUsDYA9D8w=
+		kTiHKW+QDWhZ8NuDKJV/NDmPzKc=
 		</data>
 		<key>PlugIns/AmritKirtanTests.xctest/AmritKirtanTests</key>
 		<data>
-		Xnr0qrcvFKMAgWvSdgOkWU5zFYw=
+		NhV5p945ax1cbaZGxGRSSFttrPM=
 		</data>
 		<key>PlugIns/AmritKirtanTests.xctest/Info.plist</key>
 		<data>
-		IyHz7EzOIctppIY7vuKuNbCauXo=
+		CNF7+qLP3ki9cFYndCQzWnmnUVA=
 		</data>
 		<key>PlugIns/AmritKirtanTests.xctest/_CodeSignature/CodeResources</key>
 		<data>
-		x4zybcDbG0ay4vU0srcCCNi7hjc=
+		oplTtEnl7EZoDEXWGz6koVMbOEo=
 		</data>
 		<key>SimpleLineIcons.ttf</key>
 		<data>
@@ -143,7 +143,7 @@
 		</data>
 		<key>www/amritkeertan.db</key>
 		<data>
-		AddAY+9gV0dm0AFvuKxO/uSINFY=
+		ERvGJ8iIRrT0pyDDbBPS8hbxYRA=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -240,77 +240,77 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zEroulIbyKYhB4EbtbeI4PBJfIQ=
+			Tvuq/w6S5/l+mcuMpS91/YjZ2PU=
 			</data>
 			<key>hash2</key>
 			<data>
-			k3oG3JgiJzmPGN2TBMBkuyJgDmP+UIM/xucTOritTmg=
+			RFPwuGunUCg671vkap3nZ2ykF77o4s2j7zDAn2XbOco=
 			</data>
 		</dict>
 		<key>Frameworks/IDEBundleInjection.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ILcX7tpm7WV44s/pfwloERQhInY=
+			6cPENvjjcXfDfBToJJ1118da8zc=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ni1kZDOWsRpvUPjR5NX8S4YQkTYRbjePJj2u7AuQarU=
+			LLPF72z23yVBbXYfe0hb4bJQTJFSRVDBk5OyUDe3bos=
 			</data>
 		</dict>
 		<key>Frameworks/IDEBundleInjection.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ffllRjJXzZiQRVS7G4xDUtlIio8=
+			0fLvEeGLEThn4UBToFYXic4rqjA=
 			</data>
 			<key>hash2</key>
 			<data>
-			qDy6gvbQtnrvRUofzsvKB03JHKPL5BYSAPtJhslCor4=
+			Jru3xyO+9Pka43kPgZquwkzmdyGftteE5+HGSD6YRdY=
 			</data>
 		</dict>
 		<key>Frameworks/IDEBundleInjection.framework/version.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aW8T+OYkAq9p7ODvVF4KxOWxpo4=
+			W8UHQlJOUHUdjrnh0RUqh9qxkzY=
 			</data>
 			<key>hash2</key>
 			<data>
-			WeHiD6FVZLf1eqm7LA/lcvuqa2Z+RmYEi3Zi/N05M40=
+			FPdP4nFPVQpcTGvPqKiPySck4vZwcjNstcWB9HweZYA=
 			</data>
 		</dict>
 		<key>Frameworks/XCTest.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			53QH0QrAmT2lt1KIweV2nkJMArY=
+			/6b73ybjbzwjPUHccodzeLJKGpQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			W8gDydyYsnKks91l6E6mE/LHCHyTKjEQUmuqbttIm98=
+			1uGNx3Hih75LqpmMmnSTa4Vvqk69BmdnsWtAABkb2Ow=
 			</data>
 		</dict>
 		<key>Frameworks/XCTest.framework/XCTest</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Gdkq4my/W+Wncmm9H9gSiFdlbus=
+			3NizfJMeU0sJP08q8Qi7wX/AyvI=
 			</data>
 			<key>hash2</key>
 			<data>
-			1hGMjSnYIuGWvQ8i/bOJDKCFrhrl6q7tYN9xqYAUZrA=
+			XSjXtfthzzaopwW6oSnMLrhafOkn9KkU9ZbZ/aIqCok=
 			</data>
 		</dict>
 		<key>Frameworks/XCTest.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NZVWBiJdSoWtOlI5zY2P2Y+YauE=
+			+mvvcw5UT9t0SkNxKWk0dLOay+4=
 			</data>
 			<key>hash2</key>
 			<data>
-			4iNtj3HNym8ZSwZTfV6Oa7/IuUDba8eMxDAqB4NPIUU=
+			LOX9OCUqqITwfF5IEPUIrj9+m8hK39QCJl4WbXY272o=
 			</data>
 		</dict>
 		<key>Frameworks/XCTest.framework/en.lproj/InfoPlist.strings</key>
@@ -330,11 +330,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0KaQXY+RwumYiFnS4CGdkt22Bi0=
+			qhk6hXDyQp/YYzEpKIxg0bW3tlk=
 			</data>
 			<key>hash2</key>
 			<data>
-			xDe7lkxC6ot8QncGaSp6qZ9/XbOQA/fGkPvRG+5ksCo=
+			L4ikvo5qrwsx21+syxZrwgRwrNbc3av4ZtEyZl/yF78=
 			</data>
 		</dict>
 		<key>GurbaniAkharHeavySG.ttf</key>
@@ -429,44 +429,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WQk7/39OkvIioW566kUsDYA9D8w=
+			kTiHKW+QDWhZ8NuDKJV/NDmPzKc=
 			</data>
 			<key>hash2</key>
 			<data>
-			WrZA9e0lAcHwcKadIKLOvv3fNY0wli9fHtuD1UdMnsQ=
+			jzv7DDEffJwskIx0/QxfUw8az+TQIjPsN1sA8nQplBY=
 			</data>
 		</dict>
 		<key>PlugIns/AmritKirtanTests.xctest/AmritKirtanTests</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Xnr0qrcvFKMAgWvSdgOkWU5zFYw=
+			NhV5p945ax1cbaZGxGRSSFttrPM=
 			</data>
 			<key>hash2</key>
 			<data>
-			th9hqny1aRRMcoUPQzJ+pPyGHeGk6ocqXgsxy03pv4g=
+			15ciQcV5e7sI7RwC4qIDE+BvyBaCzBJxli+kZ0cdJX4=
 			</data>
 		</dict>
 		<key>PlugIns/AmritKirtanTests.xctest/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IyHz7EzOIctppIY7vuKuNbCauXo=
+			CNF7+qLP3ki9cFYndCQzWnmnUVA=
 			</data>
 			<key>hash2</key>
 			<data>
-			IHkj9Jc2VOaYpT+tUrdprHHELDwCvrnN1RIAd2QGiaw=
+			+TmRKerc605aiQsbsD/uQBl3NilNV1czHowDG9hPLBI=
 			</data>
 		</dict>
 		<key>PlugIns/AmritKirtanTests.xctest/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			x4zybcDbG0ay4vU0srcCCNi7hjc=
+			oplTtEnl7EZoDEXWGz6koVMbOEo=
 			</data>
 			<key>hash2</key>
 			<data>
-			mlDH9Llb3fB0iS4ml0BttJ2RRhNR3ywJD9XawGcP2IM=
+			4o2n9BJgzvz1/krWjdnsUAFuUwGM83XD2Xxp2IzDKBc=
 			</data>
 		</dict>
 		<key>SimpleLineIcons.ttf</key>
@@ -495,11 +495,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AddAY+9gV0dm0AFvuKxO/uSINFY=
+			ERvGJ8iIRrT0pyDDbBPS8hbxYRA=
 			</data>
 			<key>hash2</key>
 			<data>
-			djAf1O0MtSVN9WYlImrjFDa9f86seZBqOm4rblp2uP4=
+			3fSenXnfldGQn1CH6y3dTkpfBieMgAi5ojZROO5juHE=
 			</data>
 		</dict>
 	</dict>
