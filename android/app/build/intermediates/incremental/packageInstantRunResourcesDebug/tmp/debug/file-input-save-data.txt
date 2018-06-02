@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Jun 01 07:39:42 PDT 2018
+#Fri Jun 01 08:13:16 PDT 2018
 17.baseType=DIRECTORY
 4.path=fonts/GurbaniAkharHeavySG.ttf
 8.set=ASSET

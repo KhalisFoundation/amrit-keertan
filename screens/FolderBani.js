@@ -32,7 +32,7 @@ class FolderBani extends React.Component {
 
   handleOnPress(item, navigator) {
     let index = this.state.data.indexOf(item);
-    this.props.setCurrentShabad(item.shabadId);
+    this.props.setCurrentShabadIndex(item.id);
     navigator.navigate({
       key: "Reader-" + item.id,
       routeName: "Reader",

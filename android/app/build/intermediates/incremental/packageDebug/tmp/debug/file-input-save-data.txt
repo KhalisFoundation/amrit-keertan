@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Fri Jun 01 07:39:44 PDT 2018
+#Fri Jun 01 08:20:27 PDT 2018
 5.base=/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/assets/debug
 42.base=/Users/kee/Documents/Khalis/amrit-kirtan/android/app/build/intermediates/transforms/mergeJniLibs/debug/0
 22.path=index.android.bundle

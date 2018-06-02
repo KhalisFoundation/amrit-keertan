@@ -9,7 +9,7 @@ import {
   TOGGLE_LARIVAAR,
   TOGGLE_STATISTICS,
   SET_MERGED_BANI_DATA,
-  SET_CURRENT_SHABAD,
+  SET_CURRENT_SHABAD_INDEX,
   SET_CURRENT_KIRTAN_FOLDER,
   TOGGLE_STATUS_BAR,
   TOGGLE_AUTO_SCROLL,
@@ -98,10 +98,10 @@ function mergedBaniData(state = null, action) {
   }
 }
 
-function currentShabad(state = null, action) {
+function currentShabadIndex(state = null, action) {
   switch (action.type) {
-    case SET_CURRENT_SHABAD:
-      return action.shabadId;
+    case SET_CURRENT_SHABAD_INDEX:
+      return action.indexId;
     default:
       return state;
   }
@@ -143,7 +143,7 @@ function autoScrollSpeed(state = 50, action) {
   }
 }
 
-function visram(state = false, action) {
+function visram(state = true, action) {
   switch (action.type) {
     case TOGGLE_VISRAM:
       return action.value;
@@ -163,7 +163,7 @@ const rootReducer = combineReducers({
   larivaar,
   statistics,
   mergedBaniData,
-  currentShabad,
+  currentShabadIndex,
   currentKirtanFolder,
   statusBar,
   autoScroll,

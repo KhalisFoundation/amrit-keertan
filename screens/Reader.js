@@ -38,8 +38,8 @@ class Reader extends React.Component {
       data: [],
       titleGurmukhi: "",
       titleRoman: "",
-      currentIndex: -1,
-      currentShabad: -1,
+      currentFolderIndex: -1,
+      currentShabadIndex: -1,
       paused: true,
       scrollMultiplier: 1.0,
       isLoading: false,
@@ -59,9 +59,9 @@ class Reader extends React.Component {
     }).start();
   }
 
-  loadShabad(shabadId) {
+  loadShabad(indexId) {
     Database.getShabadForId(
-      shabadId,
+      indexId,
       this.props.larivaar,
       this.props.visram
     ).then(shabad => {
@@ -74,9 +74,9 @@ class Reader extends React.Component {
 
   componentWillMount() {
     this.setState({
-      currentShabad: this.props.currentShabad
+      currentShabadIndex: this.props.currentShabadIndex
     });
-    this.loadShabad(this.props.currentShabad);
+    this.loadShabad(this.props.currentShabadIndex);
   }
 
   componentDidUpdate(prevProps) {
@@ -84,7 +84,7 @@ class Reader extends React.Component {
       prevProps.larivaar != this.props.larivaar ||
       prevProps.visram != this.props.visram
     ) {
-      this.loadShabad(this.state.currentShabad);
+      this.loadShabad(this.state.currentShabadIndex);
     }
   }
 
@@ -324,13 +324,13 @@ class Reader extends React.Component {
 
   reloadShabad(item, index) {
     this.setState({
-      currentIndex: index,
+      currentFolderIndex: index,
       titleGurmukhi: item.gurmukhi,
       titleRoman: item.roman,
-      currentShabad: item.shabadId
+      currentShabad: item.id
     });
 
-    this.loadShabad(item.shabadId);
+    this.loadShabad(item.id);
     AnalyticsManager.getInstance().trackReaderEvent("swipeShabad", item.roman);
     this.trackScreenForShabad(item.roman);
   }
@@ -349,9 +349,9 @@ class Reader extends React.Component {
           if (nativeEvent.state === State.ACTIVE) {
             if (Math.abs(nativeEvent.velocityX) > 300) {
               var index =
-                this.state.currentIndex == -1
+                this.state.currentFolderIndex == -1
                   ? params.index
-                  : this.state.currentIndex;
+                  : this.state.currentFolderIndex;
               if (nativeEvent.velocityX > 0) {
                 // Swipe Left
                 if (index !== 0) {
@@ -577,7 +577,7 @@ const styles = StyleSheet.create({
 function mapStateToProps(state) {
   return {
     nightMode: state.nightMode,
-    currentShabad: state.currentShabad,
+    currentShabadIndex: state.currentShabadIndex,
     romanized: state.romanized,
     fontSize: state.fontSize,
     fontFace: state.fontFace,
