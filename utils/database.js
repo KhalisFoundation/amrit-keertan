@@ -58,7 +58,7 @@ class Database {
     return new Promise(function(resolve) {
       db.executeSql(
         "SELECT VerseID, Gurmukhi, GurmukhiBisram, Transliteration, English, MainLine FROM mv_AK_Shabad WHERE IndexID = " +
-        indexId +
+          indexId +
           " ORDER BY VerseID ASC;",
         [],
         results => {
@@ -92,9 +92,12 @@ class Database {
 
             let curGurmukhi = larivaar ? arr.join("<wbr>") : arr.join(" ");
 
-            row.English = row.English == "" ? " " : row.English;
+            row.English =
+              row.English == "" || row.English == null ? " " : row.English;
             row.Transliteration =
-              row.Transliteration == "" ? " " : row.Transliteration;
+              row.Transliteration == "" || row.Transliteration == null
+                ? " "
+                : row.Transliteration;
 
             totalResults[i] = {
               id: row.VerseID,
