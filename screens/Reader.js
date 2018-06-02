@@ -286,6 +286,8 @@ class Reader extends React.Component {
         if(autoScrollTimeout == null) {
           setAutoScroll();
         }
+      } else if(message.hasOwnProperty('scrollToTop')){ 
+        window.scrollTo(0, 0);
       }
     }, false);
       `;
@@ -331,8 +333,12 @@ class Reader extends React.Component {
     });
 
     this.loadShabad(item.id);
+    this.toggleHeader("show");
+    this.webView.postMessage(JSON.stringify({ scrollToTop: true }));
+
     AnalyticsManager.getInstance().trackReaderEvent("swipeShabad", item.roman);
     this.trackScreenForShabad(item.roman);
+
   }
 
   render() {
