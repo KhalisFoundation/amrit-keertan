@@ -344,7 +344,7 @@ class Reader extends React.Component {
 
     return (
       <PanGestureHandler
-        minDist={100}
+        minDeltaX={100}
         onHandlerStateChange={({ nativeEvent }) => {
           if (nativeEvent.state === State.END) {
             if (Math.abs(nativeEvent.velocityX) > 300) {
