@@ -16,15 +16,15 @@ class FolderBani extends React.Component {
   }
 
   componentWillMount() {
-    this.loadKirtanFolder();
+    this.loadKeertanFolder();
   }
 
-  loadKirtanFolder() {
-    Database.getKirtanForFolder(
-      this.props.currentKirtanFolder
-    ).then(kirtan => {
+  loadKeertanFolder() {
+    Database.getKeertanForFolder(
+      this.props.currentKeertanFolder
+    ).then(keertan => {
       this.setState({
-        data: kirtan,
+        data: keertan,
         isLoading: false
       });
     });
@@ -61,7 +61,7 @@ function mapStateToProps(state) {
     romanized: state.romanized,
     fontSize: state.fontSize,
     fontFace: state.fontFace,
-    currentKirtanFolder: state.currentKirtanFolder
+    currentKeertanFolder: state.currentKeertanFolder
   };
 }
 

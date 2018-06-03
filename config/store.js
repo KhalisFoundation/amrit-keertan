@@ -7,7 +7,7 @@ import rootReducer from "../reducers/reducers";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ['navigation', 'mergedBaniData', 'currentShabadIndex', 'currentKirtanFolder'] // content will not be persisted
+  blacklist: ['navigation', 'mergedBaniData', 'currentShabadIndex', 'currentKeertanFolder'] // content will not be persisted
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

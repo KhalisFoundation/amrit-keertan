@@ -10,7 +10,7 @@ import {
   TOGGLE_STATISTICS,
   SET_MERGED_BANI_DATA,
   SET_CURRENT_SHABAD_INDEX,
-  SET_CURRENT_KIRTAN_FOLDER,
+  SET_CURRENT_KEERTAN_FOLDER,
   TOGGLE_STATUS_BAR,
   TOGGLE_PARAGRAPH_MODE,
   TOGGLE_AUTO_SCROLL,
@@ -108,9 +108,9 @@ function currentShabadIndex(state = null, action) {
   }
 }
 
-function currentKirtanFolder(state = null, action) {
+function currentKeertanFolder(state = null, action) {
   switch (action.type) {
-    case SET_CURRENT_KIRTAN_FOLDER:
+    case SET_CURRENT_KEERTAN_FOLDER:
       return action.headerId;
     default:
       return state;
@@ -174,7 +174,7 @@ const rootReducer = combineReducers({
   statistics,
   mergedBaniData,
   currentShabadIndex,
-  currentKirtanFolder,
+  currentKeertanFolder,
   statusBar,
   paragraphMode,
   autoScroll,

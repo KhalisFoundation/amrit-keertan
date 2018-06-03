@@ -73,7 +73,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js"
+        entryFile: "index.js"
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -98,7 +98,7 @@ android {
     buildToolsVersion "27.0.3"
 
     defaultConfig {
-        applicationId "com.KhalisFoundation.AmritKirtan"
+        applicationId "com.KhalisFoundation.AmritKeertan"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1

@@ -14,7 +14,7 @@ export const TOGGLE_LARIVAAR = "TOGGLE_LARIVAAR";
 export const TOGGLE_STATISTICS = "TOGGLE_STATISTICS";
 export const SET_MERGED_BANI_DATA = "SET_MERGED_BANI_DATA";
 export const SET_CURRENT_SHABAD_INDEX = "SET_CURRENT_SHABAD_INDEX";
-export const SET_CURRENT_KIRTAN_FOLDER = "SET_CURRENT_KIRTAN_FOLDER";
+export const SET_CURRENT_KEERTAN_FOLDER = "SET_CURRENT_KEERTAN_FOLDER";
 export const TOGGLE_STATUS_BAR = "TOGGLE_STATUS_BAR";
 export const TOGGLE_PARAGRAPH_MODE = "TOGGLE_PARAGRAPH_MODE"
 export const TOGGLE_AUTO_SCROLL = "TOGGLE_AUTO_SCROLL";
@@ -113,8 +113,8 @@ export function setMergedBaniData(list) {
   return { type: SET_MERGED_BANI_DATA, list };
 }
 
-export function setCurrentKirtanFolder(headerId) {
-  return { type: SET_CURRENT_KIRTAN_FOLDER, headerId };
+export function setCurrentKeertanFolder(headerId) {
+  return { type: SET_CURRENT_KEERTAN_FOLDER, headerId };
 }
 
 export function setCurrentShabadIndex(indexId) {

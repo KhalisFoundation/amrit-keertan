@@ -30,7 +30,7 @@ class Database {
     });
   }
 
-  static getKirtanForFolder(headerId) {
+  static getKeertanForFolder(headerId) {
     return new Promise(function(resolve) {
       db.executeSql(
         "SELECT IndexID, Gurmukhi, Transliteration FROM mv_AK_Shabad WHERE HeaderID = " +

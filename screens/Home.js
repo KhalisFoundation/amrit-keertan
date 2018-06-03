@@ -68,7 +68,7 @@ class Home extends React.Component {
   }
 
   handleOnPress(item, navigator) {
-    this.props.setCurrentKirtanFolder(item.id);
+    this.props.setCurrentKeertanFolder(item.id);
     navigator.navigate({
       key: "Folder-" + item.id,
       routeName: "FolderBani",
@@ -103,7 +103,7 @@ function mapStateToProps(state) {
     statusBar: state.statusBar,
     statistics: state.statistics,
     autoScroll: state.autoScroll,
-    currentKirtanFolder: state.currentKirtanFolder
+    currentKeertanFolder: state.currentKeertanFolder
   };
 }
 
