@@ -1646,7 +1646,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.WahegurooNetwork.AmritKirtan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KhalisFoundation.AmritKirtan;
 				PRODUCT_NAME = AmritKirtan;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1677,7 +1677,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.WahegurooNetwork.AmritKirtan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KhalisFoundation.AmritKirtan;
 				PRODUCT_NAME = AmritKirtan;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

@@ -63,6 +63,7 @@ class Reader extends React.Component {
     Database.getShabadForId(
       indexId,
       this.props.larivaar,
+      this.props.paragraphMode,
       this.props.visram
     ).then(shabad => {
       this.setState({
@@ -82,6 +83,7 @@ class Reader extends React.Component {
   componentDidUpdate(prevProps) {
     if (
       prevProps.larivaar != this.props.larivaar ||
+      prevProps.paragraphMode != this.props.paragraphMode ||
       prevProps.visram != this.props.visram
     ) {
       this.loadShabad(this.state.currentShabadIndex);
@@ -137,15 +139,9 @@ class Reader extends React.Component {
           "' style=\"padding: .2em; font-family:'" +
           fontFace +
           "'; font-size: " +
-          fontSizeForReader(fontSize, item.header, false) +
+          fontSizeForReader(fontSize, 0, false) +
           "pt; color: " +
-          fontColorForReader(item.header, nightMode, TextType.GURMUKHI) +
-          "; text-align: " +
-          (item.header === 0
-            ? "left"
-            : item.header === 1 || item.header === 2
-              ? "center"
-              : "right") +
+          fontColorForReader(0, nightMode, TextType.GURMUKHI) +
           ';">' +
           item.gurmukhi +
           "</div>";
@@ -153,21 +149,13 @@ class Reader extends React.Component {
         if (romanized) {
           html +=
             "<div style=\"padding: .2em; font-family:'Arial'; font-size: " +
-            fontSizeForReader(fontSize, item.header, true) +
+            fontSizeForReader(fontSize, 0, true) +
             "pt; color: " +
             fontColorForReader(
-              item.header,
+              0,
               nightMode,
               TextType.TRANSLITERATION
             ) +
-            "; text-align: " +
-            (item.header === 0
-              ? "left"
-              : item.header === 1 || item.header === 2
-                ? "center"
-                : "right") +
-            "; font-weight: " +
-            (item.header === 0 ? "normal" : "bold") +
             ';">' +
             item.roman +
             "</div>";
@@ -176,21 +164,13 @@ class Reader extends React.Component {
         if (englishTranslations) {
           html +=
             "<div style=\"padding: .2em; font-family:'Arial'; font-size: " +
-            fontSizeForReader(fontSize, item.header, true) +
+            fontSizeForReader(fontSize, 0, true) +
             "pt; color: " +
             fontColorForReader(
-              item.header,
+              0,
               nightMode,
               TextType.ENGLISH_TRANSLATION
             ) +
-            "; text-align: " +
-            (item.header === 0
-              ? "left"
-              : item.header === 1 || item.header === 2
-                ? "center"
-                : "right") +
-            "; font-weight: " +
-            (item.header === 0 ? "normal" : "bold") +
             ';">' +
             item.englishTranslations +
             "</div>";
@@ -589,6 +569,7 @@ function mapStateToProps(state) {
     fontFace: state.fontFace,
     larivaar: state.larivaar,
     englishTranslations: state.englishTranslations,
+    paragraphMode: state.paragraphMode,
     autoScroll: state.autoScroll,
     autoScrollSpeed: state.autoScrollSpeed,
     visram: state.visram

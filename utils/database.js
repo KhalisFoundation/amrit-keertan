@@ -54,19 +54,24 @@ class Database {
     });
   }
 
-  static getShabadForId(indexId, larivaar, visram) {
+  static getShabadForId(indexId, larivaar, paragraphMode, visram) {
     return new Promise(function(resolve) {
       db.executeSql(
-        "SELECT VerseID, Gurmukhi, GurmukhiBisram, Transliteration, English, MainLine FROM mv_AK_Shabad WHERE IndexID = " +
+        "SELECT ShabadID, VerseID, Gurmukhi, GurmukhiBisram, Transliteration, English, MainLine FROM mv_AK_Shabad WHERE IndexID = " +
           indexId +
           " ORDER BY VerseID ASC;",
         [],
         results => {
           var totalResults = new Array(results.rows.length);
+          var paragraphResults = new Array();
           var len = results.rows.length;
+
           var gurmukhi;
+          var paragraphId;
           var transliteration;
           var englishTranslation;
+          var paragraphHeader;
+          var prevParagraph;
           for (let i = 0; i < len; i++) {
             let row = results.rows.item(i);
 
@@ -99,15 +104,59 @@ class Database {
                 ? " "
                 : row.Transliteration;
 
-            totalResults[i] = {
-              id: row.VerseID,
-              gurmukhi: curGurmukhi,
-              roman: row.Transliteration,
-              englishTranslations: row.English,
-              header: row.MainLine
-            };
+            if (row.MainLine == 1) {
+              curGurmukhi = "<u>" + curGurmukhi + "</u>";
+              row.English = "<u>" + row.English + "</u>";
+              row.Transliteration = "<u>" + row.Transliteration + "</u>";
+            }
+
+            if (paragraphMode) {
+              if (prevParagraph !== row.ShabadID) {
+                if (i !== 0) {
+                  paragraphResults.push({
+                    id: "" + paragraphId,
+                    gurmukhi: gurmukhi,
+                    roman: transliteration,
+                    englishTranslations: englishTranslation,
+                    header: paragraphHeader
+                  });
+                }
+                paragraphId = row.VerseID;
+                paragraphHeader = row.MainLine;
+                gurmukhi = curGurmukhi;
+                transliteration = row.Transliteration;
+                englishTranslation = row.English;
+                prevParagraph = row.ShabadID;
+              } else {
+                gurmukhi += larivaar ? curGurmukhi : " " + curGurmukhi;
+                transliteration += " " + row.Transliteration;
+                englishTranslation += " " + row.English;
+              }
+
+              if (i === len - 1) {
+                paragraphResults.push({
+                  id: "" + paragraphId,
+                  gurmukhi: gurmukhi,
+                  roman: transliteration,
+                  englishTranslations: englishTranslation,
+                  header: paragraphHeader
+                });
+              }
+            } else {
+              totalResults[i] = {
+                id: row.VerseID,
+                gurmukhi: curGurmukhi,
+                roman: row.Transliteration,
+                englishTranslations: row.English,
+                header: row.MainLine
+              };
+            }
           }
-          resolve(totalResults);
+          if (paragraphMode) {
+            resolve(paragraphResults);
+          } else {
+            resolve(totalResults);
+          }
         }
       );
     });

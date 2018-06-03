@@ -207,6 +207,19 @@ class Settings extends React.Component {
           />
           <SettingsList.Item
             backgroundColor={this.props.nightMode ? "#464646" : "#fff"}
+            icon={<Icon style={styles.imageStyle} name="paragraph" size={30} />}
+            hasSwitch={true}
+            switchState={this.props.paragraphMode}
+            switchOnValueChange={this.props.toggleParagraphMode}
+            hasNavArrow={false}
+            title="Paragraph Mode"
+            titleStyle={[
+              styles.titleText,
+              this.props.nightMode && { color: "#fff" }
+            ]}
+          />
+          <SettingsList.Item
+            backgroundColor={this.props.nightMode ? "#464646" : "#fff"}
             icon={<Icon style={styles.imageStyle} name="pause" size={30} />}
             hasSwitch={true}
             switchState={this.props.visram}
@@ -362,6 +375,7 @@ function mapStateToProps(state) {
     larivaar: state.larivaar,
     statistics: state.statistics,
     statusBar: state.statusBar,
+    paragraphMode: state.paragraphMode,
     autoScroll: state.autoScroll,
     visram: state.visram
   };

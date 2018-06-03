@@ -1,8 +1,8 @@
-package com.WahegurooNetwork.AmritKirtan;
+package com.KhalisFoundation.AmritKirtan;
 
 import android.app.Application;
 
-import com.amritkirtan.BuildConfig;
+import com.WahegurooNetwork.AmritKirtan.BuildConfig;
 import com.facebook.react.ReactApplication;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.apsl.versionnumber.RNVersionNumberPackage;

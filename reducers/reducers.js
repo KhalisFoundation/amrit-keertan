@@ -12,6 +12,7 @@ import {
   SET_CURRENT_SHABAD_INDEX,
   SET_CURRENT_KIRTAN_FOLDER,
   TOGGLE_STATUS_BAR,
+  TOGGLE_PARAGRAPH_MODE,
   TOGGLE_AUTO_SCROLL,
   SET_AUTO_SCROLL_SPEED,
   TOGGLE_VISRAM
@@ -125,6 +126,15 @@ function statusBar(state = true, action) {
   }
 }
 
+function paragraphMode(state = false, action) {
+  switch (action.type) {
+    case TOGGLE_PARAGRAPH_MODE:
+      return action.paragraph;
+    default:
+      return state;
+  }
+}
+
 function autoScroll(state = false, action) {
   switch (action.type) {
     case TOGGLE_AUTO_SCROLL:
@@ -166,6 +176,7 @@ const rootReducer = combineReducers({
   currentShabadIndex,
   currentKirtanFolder,
   statusBar,
+  paragraphMode,
   autoScroll,
   autoScrollSpeed,
   visram

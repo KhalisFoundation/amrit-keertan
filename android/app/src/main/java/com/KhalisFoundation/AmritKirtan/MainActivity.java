@@ -1,4 +1,4 @@
-package com.WahegurooNetwork.AmritKirtan;
+package com.KhalisFoundation.AmritKirtan;
 
 import android.os.Bundle;
 
