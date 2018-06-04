@@ -513,7 +513,7 @@ class Reader extends React.Component {
                     this.webView.postMessage(JSON.stringify(autoScrollSpeed));
                   }}
                   onSlidingComplete={value => {
-                    AnalyticsManager.getInstance().trackEvent(
+                    AnalyticsManager.getInstance().trackReaderEvent(
                       "autoScrollSpeed",
                       value
                     );
