@@ -6,11 +6,10 @@ import { StatusBar } from "react-native";
 import SplashScreen from "react-native-splash-screen";
 import AnalyticsManager from "../utils/analytics";
 import Database from "../utils/database";
-import { mergedBaniList } from "../utils/helpers";
 import * as actions from "../actions/actions";
 import BaniList from "../components/BaniList";
 
-class Home extends React.Component {
+class LetterIndex extends React.Component {
   constructor(props) {
     super(props);
 
@@ -111,4 +110,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(LetterIndex);

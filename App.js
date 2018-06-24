@@ -1,22 +1,27 @@
 import React from "react";
-import { Platform, StyleSheet, SafeAreaView, StatusBar } from "react-native";
-import { StackNavigator, TabNavigator } from "react-navigation";
+import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
+import { StackNavigator, createMaterialTopTabNavigator } from "react-navigation";
 import { Header } from "react-native-elements";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import storage from "redux-persist/lib/storage";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import GLOBAL from "./utils/globals";
-import HomeScreen from "./screens/Home";
+import CategoryTab from "./screens/CategoryIndex";
+import LetterTab from "./screens/LetterIndex";
 import FolderBaniScreen from "./screens/FolderBani";
 import SettingsScreen from "./screens/Settings";
 import AboutScreen from "./screens/About";
 import ReaderScreen from "./screens/Reader";
 import createStore from "./config/store";
 
+const HomeTabs = createMaterialTopTabNavigator({
+  Letter: LetterTab,
+  Category: CategoryTab,
+});
+
 const RootStack = StackNavigator({
   Home: {
-    screen: HomeScreen,
+    screen: HomeTabs,
     navigationOptions: ({ navigation }) => ({
       header: (
         <Header
