@@ -35,7 +35,7 @@ class Database {
       db.executeSql(
         "SELECT HeaderID, IndexID, Gurmukhi, Transliteration FROM mv_AK_Shabad WHERE substr(MainLetters, 1, 1) = '" +
           letter +
-          "' AND MainLine = 1 ORDER BY IndexID ASC;",
+          "' AND MainLine = 1 ORDER BY GurmukhiUni ASC;",
         [],
         results => {
           var totalResults = [];

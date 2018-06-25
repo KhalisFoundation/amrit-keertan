@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import GLOBAL from "./utils/globals";
-import CategoryTab from "./screens/CategoryIndex";
+import ChapterTab from "./screens/ChapterIndex";
 import LetterTab from "./screens/LetterIndex";
 import FolderBaniScreen from "./screens/FolderBani";
 import SettingsScreen from "./screens/Settings";
@@ -20,7 +20,7 @@ import createStore from "./config/store";
 const HomeTabs = createMaterialTopTabNavigator(
   {
     Letter: LetterTab,
-    Category: CategoryTab
+    Chapter: ChapterTab
   },
   {
     tabBarOptions: {
