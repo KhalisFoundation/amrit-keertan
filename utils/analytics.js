@@ -26,6 +26,14 @@ export default class AnalyticsManager {
     }
   }
 
+  trackSearchEvent(action, label) {
+    if (this._trackingOn) {
+      this._tracker.trackEvent("search", action, {
+        label: "" + label
+      });
+    }
+  }
+
   trackReaderEvent(action, label) {
     if (this._trackingOn) {
       this._tracker.trackEvent("reader", action, {

@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import * as actions from "../actions/actions";
 import BaniList from "../components/BaniList";
 import Database from "../utils/database";
+import AnalyticsManager from "../utils/analytics";
 
 class FolderBani extends React.Component {
 
@@ -16,7 +17,24 @@ class FolderBani extends React.Component {
   }
 
   componentWillMount() {
-    this.loadKeertanFolder();
+    if(isNaN(this.props.currentKeertanFolder)) {
+      this.loadLetterFolder();
+      AnalyticsManager.getInstance().trackSearchEvent("letter", this.props.currentKeertanFolder);
+    } else {
+      AnalyticsManager.getInstance().trackSearchEvent("category", this.props.currentKeertanFolder);
+      this.loadKeertanFolder();
+    }
+  }
+
+  loadLetterFolder() {
+    Database.getKeertanForLetter(
+      this.props.currentKeertanFolder
+    ).then(keertan => {
+      this.setState({
+        data: keertan,
+        isLoading: false
+      });
+    });
   }
 
   loadKeertanFolder() {

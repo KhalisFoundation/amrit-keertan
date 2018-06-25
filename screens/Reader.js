@@ -3,7 +3,6 @@ import {
   Animated,
   Dimensions,
   StyleSheet,
-  Modal,
   View,
   WebView,
   Platform,
@@ -15,7 +14,6 @@ import { bindActionCreators } from "redux";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import {
   PanGestureHandler,
-  Directions,
   State
 } from "react-native-gesture-handler";
 import GLOBAL from "../utils/globals";

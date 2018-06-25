@@ -1,6 +1,9 @@
 import React from "react";
 import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
-import { StackNavigator, createMaterialTopTabNavigator } from "react-navigation";
+import {
+  StackNavigator,
+  createMaterialTopTabNavigator
+} from "react-navigation";
 import { Header } from "react-native-elements";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -14,10 +17,19 @@ import AboutScreen from "./screens/About";
 import ReaderScreen from "./screens/Reader";
 import createStore from "./config/store";
 
-const HomeTabs = createMaterialTopTabNavigator({
-  Letter: LetterTab,
-  Category: CategoryTab,
-});
+const HomeTabs = createMaterialTopTabNavigator(
+  {
+    Letter: LetterTab,
+    Category: CategoryTab
+  },
+  {
+    tabBarOptions: {
+      style: {
+        backgroundColor: GLOBAL.COLOR.TAB_BAR_COLOR
+      }
+    }
+  }
+);
 
 const RootStack = StackNavigator({
   Home: {
@@ -110,7 +122,6 @@ const RootStack = StackNavigator({
   },
   Reader: {
     screen: ReaderScreen,
-
     navigationOptions: {
       header: null
     }

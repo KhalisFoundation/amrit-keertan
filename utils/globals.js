@@ -1,6 +1,7 @@
 export default {
   COLOR: {
     TOOLBAR_COLOR: "#b20000",
+    TAB_BAR_COLOR: "#EE3E3E",
     READER_HEADER_COLOR: "#b20000dd",
     READER_FOOTER_COLOR: "#b20000dd",
     TOOLBAR_COLOR_ALT: "#DEBB0A",

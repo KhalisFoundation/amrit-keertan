@@ -1,7 +1,7 @@
 import React from "react";
 import SQLite from "react-native-sqlite-storage";
 
-var database_name = "amritkeertanv1.db";
+var database_name = "amritkeertanv2.db";
 
 let db = SQLite.openDatabase({ name: database_name, createFromLocation: 1 });
 
@@ -22,6 +22,30 @@ class Database {
               gurmukhi: row.Gurmukhi,
               roman: row.Transliteration,
               folder
+            });
+          }
+          resolve(totalResults);
+        }
+      );
+    });
+  }
+
+  static getKeertanForLetter(letter) {
+    return new Promise(function(resolve) {
+      db.executeSql(
+        "SELECT IndexID, Gurmukhi, Transliteration FROM mv_AK_Shabad WHERE substr(MainLetters, 1, 1) = '" +
+          letter +
+          "' AND MainLine = 1 ORDER BY IndexID ASC;",
+        [],
+        results => {
+          var totalResults = [];
+          var len = results.rows.length;
+          for (let i = 0; i < len; i++) {
+            let row = results.rows.item(i);
+            totalResults.push({
+              id: row.IndexID,
+              gurmukhi: row.Gurmukhi,
+              roman: row.Transliteration
             });
           }
           resolve(totalResults);
