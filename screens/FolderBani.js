@@ -7,7 +7,6 @@ import Database from "../utils/database";
 import AnalyticsManager from "../utils/analytics";
 
 class FolderBani extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -17,19 +16,23 @@ class FolderBani extends React.Component {
   }
 
   componentWillMount() {
-    if(isNaN(this.props.currentKeertanFolder)) {
-      this.loadLetterFolder();
-      AnalyticsManager.getInstance().trackSearchEvent("letter", this.props.currentKeertanFolder);
+    if (isNaN(this.props.currentKeertanFolder)) {
+      this.loadLetterFolder(this.props.currentKeertanFolder);
+      AnalyticsManager.getInstance().trackSearchEvent(
+        "letter",
+        this.props.currentKeertanFolder
+      );
     } else {
-      AnalyticsManager.getInstance().trackSearchEvent("category", this.props.currentKeertanFolder);
-      this.loadKeertanFolder();
+      AnalyticsManager.getInstance().trackSearchEvent(
+        "category",
+        this.props.currentKeertanFolder
+      );
+      this.loadKeertanFolder(this.props.currentKeertanFolder);
     }
   }
 
-  loadLetterFolder() {
-    Database.getKeertanForLetter(
-      this.props.currentKeertanFolder
-    ).then(keertan => {
+  loadLetterFolder(letter) {
+    Database.getKeertanForLetter(letter).then(keertan => {
       this.setState({
         data: keertan,
         isLoading: false
@@ -37,10 +40,8 @@ class FolderBani extends React.Component {
     });
   }
 
-  loadKeertanFolder() {
-    Database.getKeertanForFolder(
-      this.props.currentKeertanFolder
-    ).then(keertan => {
+  loadKeertanFolder(folderID) {
+    Database.getKeertanForFolder(folderID).then(keertan => {
       this.setState({
         data: keertan,
         isLoading: false
@@ -49,13 +50,30 @@ class FolderBani extends React.Component {
   }
 
   handleOnPress(item, navigator) {
-    let index = this.state.data.indexOf(item);
     this.props.setCurrentShabadIndex(item.id);
-    navigator.navigate({
-      key: "Reader-" + item.id,
-      routeName: "Reader",
-      params: { item: item, index: index, data: this.state.data }
-    });
+    if (isNaN(this.props.currentKeertanFolder)) {
+      Database.getKeertanForFolder(item.folderID).then(keertan => {
+        var index = -1;
+        keertan.find(function(obj, i) {
+          if (obj.id === item.id) {
+            index = i;
+            return;
+          }
+        });
+        navigator.navigate({
+          key: "Reader-" + item.id,
+          routeName: "Reader",
+          params: { item: item, index: index, data: keertan }
+        });
+      });
+    } else {
+      let index = this.state.data.indexOf(item);
+      navigator.navigate({
+        key: "Reader-" + item.id,
+        routeName: "Reader",
+        params: { item: item, index: index, data: this.state.data }
+      });
+    }
   }
 
   render() {
@@ -87,4 +105,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FolderBani);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FolderBani);

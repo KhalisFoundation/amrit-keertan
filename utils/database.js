@@ -33,7 +33,7 @@ class Database {
   static getKeertanForLetter(letter) {
     return new Promise(function(resolve) {
       db.executeSql(
-        "SELECT IndexID, Gurmukhi, Transliteration FROM mv_AK_Shabad WHERE substr(MainLetters, 1, 1) = '" +
+        "SELECT HeaderID, IndexID, Gurmukhi, Transliteration FROM mv_AK_Shabad WHERE substr(MainLetters, 1, 1) = '" +
           letter +
           "' AND MainLine = 1 ORDER BY IndexID ASC;",
         [],
@@ -45,7 +45,8 @@ class Database {
             totalResults.push({
               id: row.IndexID,
               gurmukhi: row.Gurmukhi,
-              roman: row.Transliteration
+              roman: row.Transliteration,
+              folderID: row.HeaderID
             });
           }
           resolve(totalResults);
