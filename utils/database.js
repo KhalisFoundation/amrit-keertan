@@ -107,11 +107,11 @@ class Database {
 
             var arr = [];
             splitted.forEach(function(word) {
-              if (word.indexOf(";") >= 0) {
+              if (visram && word.indexOf(";") >= 0) {
                 arr.push(
                   "<span style='color:orange'>" + word.slice(0, -1) + "</span>"
                 );
-              } else if (word.indexOf(",") >= 0) {
+              } else if (visram && word.indexOf(",") >= 0) {
                 arr.push(
                   "<span style='color:green'>" + word.slice(0, -1) + "</span>"
                 );

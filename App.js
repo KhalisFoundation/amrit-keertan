@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
+import {
+  StyleSheet,
+  SafeAreaView,
+  StatusBar,
+  BackHandler,
+  Alert
+} from "react-native";
 import {
   StackNavigator,
   createMaterialTopTabNavigator
@@ -165,6 +171,28 @@ export default class App extends React.Component {
       statusBarType: "light-content"
     };
   }
+
+  componentDidMount() {
+    BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener("hardwareBackPress", this.handleBackPress);
+  }
+
+  handleBackPress = () => {
+    Alert.alert(
+      "Exit Amrit Keertan",
+      "Are you sure you want to exit?",
+      [
+        { text: "Cancel" },
+        { text: "Exit", onPress: () => BackHandler.exitApp() }
+      ],
+      { cancelable: true }
+    );
+    return true;
+  };
+
   _getCurrentRouteName(navState) {
     if (navState.hasOwnProperty("index")) {
       this._getCurrentRouteName(navState.routes[navState.index]);
@@ -202,7 +230,7 @@ export default class App extends React.Component {
             ]}
           >
             <RootStack
-              onNavigationStateChange={(prevState, newState) => {
+              onNavigationStateChange={newState => {
                 this._getCurrentRouteName(newState);
               }}
             />
